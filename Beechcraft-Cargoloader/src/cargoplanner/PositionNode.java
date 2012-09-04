@@ -28,13 +28,13 @@
 package cargoplanner;
 
 import cargoplanner.dnd.DroppableNode;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.effect.DropShadowBuilder;
 import javafx.scene.effect.InnerShadowBuilder;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
-import javafx.scene.paint.CycleMethod;
+import javafx.scene.shape.Rectangle;
 
 /**
  * just a rectangle denoting a position on the aircrafts deck where a user can place cargo container.

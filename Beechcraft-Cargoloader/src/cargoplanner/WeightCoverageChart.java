@@ -27,19 +27,16 @@
  */
 package cargoplanner;
 
-import cargoplanner.PlanData;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
-import javafx.scene.chart.PieChart;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChartBuilder;
-import javafx.scene.paint.Color;
 
 /**
  * the pie chart showing weight on each section of the main deck of the
@@ -62,7 +59,6 @@ public class WeightCoverageChart extends Parent {
     NumberBinding weightH = PlanData.weightHR.add(PlanData.weightHL);
     NumberBinding weightI = PlanData.weightIR.add(PlanData.weightIL);
     ObservableList pieData = FXCollections.observableArrayList(
-            //couldn't understand why it gets stucked when I have 0 as the data value or 0 in the 'then' condition of the "bind : if 0 then 1 else "
             new PieChart.Data("A", (weightA.doubleValue())),
             new PieChart.Data("B", (weightB.doubleValue())),
             new PieChart.Data("C", (weightC.doubleValue())),

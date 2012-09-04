@@ -28,15 +28,15 @@
 package cargoplanner.envelope;
 
 import cargoplanner.PlanData;
-import javafx.scene.text.Font;
-import javafx.scene.chart.LineChart;
-import javafx.scene.Group;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Side;
+import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * the aircraft envelope of operational limits

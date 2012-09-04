@@ -27,24 +27,20 @@
  */
 package cargoplanner;
 
-import javafx.beans.binding.Bindings;
 import javafx.scene.CacheHint;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.GlowBuilder;
 import javafx.scene.effect.ShadowBuilder;
 import javafx.scene.shape.RectangleBuilder;
-import javafx.util.Callback;
 
 /**
  * @author Abhilshit Soni

@@ -4,7 +4,6 @@
  */
 package cargoplanner.dnd;
 
-import cargoplanner.ULDNode;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
