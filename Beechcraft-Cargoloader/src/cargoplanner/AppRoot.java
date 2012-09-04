@@ -25,6 +25,7 @@ public class AppRoot extends Group {
     private static PlanData planData = new PlanData();
     private static DeckPanel deckPanel = getDeckPanel();
     private static GraphPanel graphPanel = new GraphPanel("graph");
+    public static WeightCoverageChart weightCoverageChart = new WeightCoverageChart();
     private static  ScrollPane uldScrollPane = new ScrollPane();
     public AppRoot() {
         super();
@@ -67,7 +68,7 @@ public class AppRoot extends Group {
         GridPane.setValignment(uldList, VPos.TOP);
         content.add(uldScrollPane);
 
-        this.getChildren().addAll(dataPanel,graphPanel,deckPanel, grid1);
+        this.getChildren().addAll(dataPanel,graphPanel,weightCoverageChart,deckPanel, grid1);
 
     }
 
