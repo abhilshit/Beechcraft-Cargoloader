@@ -25,11 +25,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package cargoloader;
+package cargoplanner;
 
 import cargoplanner.PlanData;
+import javafx.beans.binding.NumberBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Group;
 import javafx.scene.chart.PieChart;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -38,57 +42,101 @@ import javafx.scene.chart.PieChartBuilder;
 import javafx.scene.paint.Color;
 
 /**
- * the pie chart showing weight on each section of the main deck of the aircraft.
+ * the pie chart showing weight on each section of the main deck of the
+ * aircraft.
+ *
  * @author Abhilshit Soni
  */
 public class WeightCoverageChart extends Parent {
 
-//    public Node anotherChart;
-//    public PlanData planData;
-//    PieChart pie =  PieChartBuilder.create().title("Weight Coverage").scaleX(0.45).scaleY(0.48).translateX(-130).translateY(353).build();
-//                
-//    ObservableList pieData = FXCollections.observableArrayList(
-//                    //couldn't understand why it gets stucked when I have 0 as the data value or 0 in the 'then' condition of the "bind : if 0 then 1 else "
-//                    new PieChart.Data("A",(PlanData.weightAR + PlanData.weightAL) == 0 ? 0.0 : (PlanData.weightAR + PlanData.weightAL)),
-//                    new PieChart.Data("B",(PlanData.weightBR + PlanData.weightBL) == 0 ? 0.0 : (PlanData.weightBR + PlanData.weightBL)),
-//                    new PieChart.Data("C",(PlanData.weightCR + PlanData.weightCL) == 0 ? 0.0 : (PlanData.weightCR + PlanData.weightCL)),
-//                    new PieChart.Data("D",(PlanData.weightDR + PlanData.weightDL) == 0 ? 0.0 : (PlanData.weightDR + PlanData.weightDL)),
-//                    new PieChart.Data("E",(PlanData.weightER + PlanData.weightEL) == 0 ? 0.0 : (PlanData.weightER + PlanData.weightEL)),
-//                    new PieChart.Data("F",(PlanData.weightFR + PlanData.weightFL) == 0 ? 0.0 : (PlanData.weightFR + PlanData.weightFL)),
-//                    new PieChart.Data("G",(PlanData.weightGR + PlanData.weightGL) == 0 ? 0.0 : (PlanData.weightGR + PlanData.weightGL)),
-//                    new PieChart.Data("H",(PlanData.weightHR + PlanData.weightHL) == 0 ? 0.0 : (PlanData.weightHR + PlanData.weightHL)),
-//                    new PieChart.Data("I",(PlanData.weightIR + PlanData.weightIL) == 0 ? 0.0 : (PlanData.weightIR + PlanData.weightIL)));
-//                    
-//                    PieChart.Data {label: "Crew" value: PlanData.crewWeight }
-//                    PieChart.Data {label: "Fuel" value: PlanData.fuelWeight }
-//                ]
-//            }
-//    public var enlargedPie = EnLargedWeightCoverage {
-//                pie: bind this.pie
-//            };
-//
-//    init {
-//        cache = true;
-//        onMouseClicked = function (e: MouseEvent): Void {
-//                    delete pie from scene.content;
-//                    pie.scaleX = 1;
-//                    pie.scaleY = 1;
-//                    pie.translateX = 200;
-//                    pie.translateY = 80;
-//                    delete pie from enlargedPie.finalGroup.content;
-//                    insert pie into scene.content;
-//                    insert enlargedPie into scene.content;
-//                    for (i in scene.content) {
-//                        // println("id's {id}");
-//                        if (i.id.equals("pie")) {
-//                            i.toFront();
-//                            break;
-//                        }
-//
-//                    }
-//                }
-//    }
-//
+    public Node anotherChart;
+    public PlanData planData;
+    PieChart pie = PieChartBuilder.create().title("Weight Coverage").scaleX(0.85).scaleY(0.88).translateX(860).translateY(323).build();
+    public static NumberBinding weightA = PlanData.weightAR.add(PlanData.weightAL);
+    NumberBinding weightB = PlanData.weightBR.add(PlanData.weightBL);
+    NumberBinding weightC = PlanData.weightCR.add(PlanData.weightCL);
+    NumberBinding weightD = PlanData.weightDR.add(PlanData.weightDL);
+    NumberBinding weightE = PlanData.weightER.add(PlanData.weightEL);
+    NumberBinding weightF = PlanData.weightFR.add(PlanData.weightFL);
+    NumberBinding weightG = PlanData.weightGR.add(PlanData.weightGL);
+    NumberBinding weightH = PlanData.weightHR.add(PlanData.weightHL);
+    NumberBinding weightI = PlanData.weightIR.add(PlanData.weightIL);
+    ObservableList pieData = FXCollections.observableArrayList(
+            //couldn't understand why it gets stucked when I have 0 as the data value or 0 in the 'then' condition of the "bind : if 0 then 1 else "
+            new PieChart.Data("A", (weightA.doubleValue())),
+            new PieChart.Data("B", (weightB.doubleValue())),
+            new PieChart.Data("C", (weightC.doubleValue())),
+            new PieChart.Data("D", (weightD.doubleValue())),
+            new PieChart.Data("E", (weightE.doubleValue())),
+            new PieChart.Data("F", (weightF.doubleValue())),
+            new PieChart.Data("G", (weightG.doubleValue())),
+            new PieChart.Data("H", (weightH.doubleValue())),
+            new PieChart.Data("I", (weightI.doubleValue())),
+            new PieChart.Data("Crew", PlanData.crewWeight),
+            new PieChart.Data("Fuel", PlanData.fuelWeight));
+
+    public WeightCoverageChart() {
+        weightA.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(0, new PieChart.Data("A " +weightA.doubleValue() +"kgs" , (weightA.doubleValue())));
+            }
+        });
+        weightB.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(1, new PieChart.Data("B", (weightA.doubleValue())));
+            }
+        });
+        weightC.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(2, new PieChart.Data("C", (weightC.doubleValue())));
+            }
+        });
+        weightD.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(3, new PieChart.Data("D", (weightD.doubleValue())));
+            }
+        });
+        weightE.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(4, new PieChart.Data("E", (weightE.doubleValue())));
+            }
+        });
+        weightF.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(5, new PieChart.Data("F", (weightF.doubleValue())));
+            }
+        });
+        weightG.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(6, new PieChart.Data("G", (weightG.doubleValue())));
+            }
+        });
+        weightH.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(7, new PieChart.Data("H", (weightH.doubleValue())));
+            }
+        });
+        weightI.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                pieData.set(8, new PieChart.Data("I", (weightI.doubleValue())));
+            }
+        });
+        this.setCache(true);
+        pie.setData(pieData);
+        Group group = new Group();
+        group.getChildren().addAll(pie);
+        getChildren().add(group);
+    }
+}
 //    var pieBorder = Rectangle {
 //                scaleX: 0.52 scaleY: 0.50
 //                cache: true
@@ -130,4 +178,4 @@ public class WeightCoverageChart extends Parent {
 //                };
 //    }
 
-}
+//}
