@@ -28,6 +28,8 @@
 package cargoplanner;
 
 import cargoplanner.envelope.DataUtil;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -72,24 +74,24 @@ public class PlanData {
      */
     public static double landingCG;
     public static ObservableList<PositionNode> loadedPositions = FXCollections.observableArrayList();
-    public static double weightAR = 0;
-    public static double weightBR = 0;
-    public static double weightCR = 0;
-    public static double weightDR = 0;
-    public static double weightER = 0;
-    public static double weightFR = 0;
-    public static double weightGR = 0;
-    public static double weightHR = 0;
-    public static double weightIR = 0;
-    public static double weightAL = 0;
-    public static double weightBL = 0;
-    public static double weightCL = 0;
-    public static double weightDL = 0;
-    public static double weightEL = 0;
-    public static double weightFL = 0;
-    public static double weightGL = 0;
-    public static double weightHL = 0;
-    public static double weightIL = 0;
+    public static DoubleProperty weightAR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightBR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightCR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightDR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightER  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightFR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightGR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightHR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightIR  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightAL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightBL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightCL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightDL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightEL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightFL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightGL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightHL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightIL  = new SimpleDoubleProperty(0);
 
     public PlanData() {
         DataPanel.setCWeight(0);
@@ -134,63 +136,64 @@ public class PlanData {
         DataPanel.setCg(centerOfGravity);
         DataPanel.updateParameters();
         DataUtil.populateCGData(totalWeight / 100, centerOfGravity);
+        System.out.println(WeightCoverageChart.weightA.getValue());
     }
 
     public static void setPositionWeight(String positionID, double weight) {
         switch (positionID) {
             case "AR":
-                weightAR = weight;
+                weightAR.setValue(weight);
                 break;
             case "AL":
-                weightAL = weight;
+                weightAL.setValue(weight);
                 break;
             case "BR":
-                weightBR = weight;
+                weightBR.setValue(weight);
                 break;
             case "BL":
-                weightBL = weight;
+                weightBL.setValue(weight);
                 break;
             case "CR":
-                weightCR = weight;
+                weightCR.setValue(weight);
                 break;
             case "CL":
-                weightCL = weight;
+                weightCL.setValue(weight);
                 break;
             case "DR":
-                weightDR = weight;
+                weightDR.setValue(weight);
                 break;
             case "DL":
-                weightDL = weight;
+                weightDL.setValue(weight);
                 break;
             case "ER":
-                weightER = weight;
+                weightER.setValue(weight);
                 break;
             case "EL":
-                weightEL = weight;
+                weightEL.setValue(weight);
                 break;
             case "FR":
-                weightFR = weight;
+                weightFR.setValue(weight);
                 break;
             case "FL":
-                weightFL = weight;
+                weightFL.setValue(weight);
                 break;
             case "GR":
-                weightGR = weight;
+                weightGR.setValue(weight);
                 break;
             case "GL":
-                weightGL = weight;
+                weightGL.setValue(weight);
                 break;
             case "HR":
-                weightHR = weight;
+                weightHR.setValue(weight);
                 break;
             case "HL":
-                weightHL = weight;
+                weightHL.setValue(weight);
                 break;
             case "IR":
-                weightIR = weight;
+                weightIR.setValue(weight);
                 break;
             case "IL":
-                weightIL = weight;
+                weightIL.setValue(weight);
                 break;
         }
     }
