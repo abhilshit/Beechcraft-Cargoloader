@@ -27,6 +27,7 @@ public class AppRoot extends Group {
     private static GraphPanel graphPanel = new GraphPanel("graph");
     public static WeightCoverageChart weightCoverageChart = new WeightCoverageChart();
     private static  ScrollPane uldScrollPane = new ScrollPane();
+    
     public AppRoot() {
         super();
         GridPane grid1 = new GridPane();
@@ -38,7 +39,7 @@ public class AppRoot extends Group {
         ObservableList content = grid1.getChildren();
 
         ULDList uldList = new ULDList();
-       
+        uldScrollPane.setId("uld-list-scrollbar");
         uldScrollPane.setContent(uldList);
         uldScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         uldScrollPane.setFocusTraversable(true);
@@ -74,7 +75,7 @@ public class AppRoot extends Group {
 
     private static DeckPanel getDeckPanel() {
         DeckPanel deck = new DeckPanel();
-
+        deck.setId("deck");
         for (Node positionNode : deck.getChildren()) {
             PositionNode position = (PositionNode) positionNode;
             position.setPlanData(planData);
