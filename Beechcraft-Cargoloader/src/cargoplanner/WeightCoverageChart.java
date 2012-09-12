@@ -81,7 +81,7 @@ public class WeightCoverageChart extends Parent {
         weightB.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                pieData.set(1, new PieChart.Data("B", (weightA.doubleValue())));
+                pieData.set(1, new PieChart.Data("B", (weightB.doubleValue())));
             }
         });
         weightC.addListener(new ChangeListener<Number>() {
