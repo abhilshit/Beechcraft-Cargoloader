@@ -22,6 +22,8 @@ public class ULDList extends GridPane {
         this.setHgap(uldSpacing);
         this.setVgap(uldSpacing);
         this.setAlignment(Pos.CENTER);
+        this.setId("uld-list");
+       
         try {
             this.addColumn(0,new ULDNode(new PseudoULDNode(new ULD(400), true)),
                     new ULDNode(new PseudoULDNode(new ULD(200), true)),
