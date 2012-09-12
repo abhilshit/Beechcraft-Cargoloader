@@ -27,8 +27,7 @@
  */
 package cargoplanner;
 
-import javafx.scene.CacheHint;
-import javafx.scene.paint.Color;
+import java.text.DecimalFormat;
 import javafx.scene.shape.Rectangle;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -38,9 +37,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.effect.GlowBuilder;
-import javafx.scene.effect.ShadowBuilder;
-import javafx.scene.shape.RectangleBuilder;
 
 /**
  * @author Abhilshit Soni
@@ -54,7 +50,7 @@ public final class DataPanel extends Parent {
     private static DoubleProperty tMomentProperty = new SimpleDoubleProperty();
     private static DoubleProperty cgProperty = new SimpleDoubleProperty();
     private static ObservableList<ParameterValues> paramValues = FXCollections.observableArrayList();
-
+    private static DecimalFormat decimalFormat = new DecimalFormat("#.#######");
     
     TableView<ParameterValues> gridPanel = new TableView<ParameterValues>();
     private Rectangle gridBorder = null;
@@ -73,8 +69,8 @@ public final class DataPanel extends Parent {
         gridPanel.setCache(true);
         gridPanel.setLayoutX(-16);
         gridPanel.setLayoutY(-31);
-        gridPanel.setPrefHeight(366);
-        gridPanel.setPrefWidth(277);
+        gridPanel.setPrefHeight(390);
+        gridPanel.setPrefWidth(285);
         gridPanel.setMouseTransparent(false);
         TableColumn parameterColumn = new TableColumn();
         parameterColumn.setText("Parameter");
@@ -86,38 +82,38 @@ public final class DataPanel extends Parent {
         valueColumn.setCellValueFactory(new PropertyValueFactory<ParameterValues, String>("value"));
         gridPanel.getColumns().addAll(parameterColumn, valueColumn);
         gridPanel.setItems(paramValues);
-        gridBorder = RectangleBuilder.create().cache(true).
-                cacheHint(CacheHint.SCALE_AND_ROTATE).
-                x(gridPanel.translateXProperty().
-                doubleValue() - 15).
-                y(gridPanel.translateYProperty().
-                doubleValue() - 30).
-                fill(Color.CADETBLUE).
-                width(281).
-                height(367).
-                arcWidth(15).
-                arcHeight(15).
-                effect(GlowBuilder.create().level(1).
-                input(ShadowBuilder.create().width(5).
-                color(Color.CADETBLUE).
-                radius(15).
-                build()).
-                build()).
-                opacity(0.5).
-                build();
-        gridBG = RectangleBuilder.create().cache(true).
-                x(gridPanel.translateXProperty().
-                doubleValue() - 19).
-                y(gridPanel.translateYProperty().
-                doubleValue() - 34).
-                fill(Color.web("#0093ff")).
-                width(281).
-                height(372).
-                arcWidth(15).
-                arcHeight(15).
-                build();
+//        gridBorder = RectangleBuilder.create().cache(true).
+//                cacheHint(CacheHint.SCALE_AND_ROTATE).
+//                x(gridPanel.translateXProperty().
+//                doubleValue() - 15).
+//                y(gridPanel.translateYProperty().
+//                doubleValue() - 30).
+//                fill(Color.CADETBLUE).
+//                width(281).
+//                height(367).
+//                arcWidth(15).
+//                arcHeight(15).
+//                effect(GlowBuilder.create().level(1).
+//                input(ShadowBuilder.create().width(5).
+//                color(Color.CADETBLUE).
+//                radius(15).
+//                build()).
+//                build()).
+//                opacity(0.5).
+//                build();
+//        gridBG = RectangleBuilder.create().cache(true).
+//                x(gridPanel.translateXProperty().
+//                doubleValue() - 19).
+//                y(gridPanel.translateYProperty().
+//                doubleValue() - 34).
+//                fill(Color.web("#0093ff")).
+//                width(281).
+//                height(372).
+//                arcWidth(15).
+//                arcHeight(15).
+//                build();
         this.getChildren().
-                addAll(gridBorder, gridBG, gridPanel);
+                addAll(gridPanel);
 
     }
 
@@ -131,7 +127,7 @@ public final class DataPanel extends Parent {
                 PlanData.basicOperatingMoment + " lb-in");
         paramValues.add(emptyAircraftMoment);
         ParameterValues emptyAircraftCG = new ParameterValues(
-                "Empty Aircraft Center of Gravity", PlanData.basicCG + " in");
+                "Empty Aircraft Center of Gravity", decimalFormat.format(PlanData.basicCG) + " in");
         paramValues.add(emptyAircraftCG);
         ParameterValues totalCargoWeight = new ParameterValues(
                 "Total Cargo Weight", cWeightProperty.getValue() + " lbs");
@@ -146,7 +142,7 @@ public final class DataPanel extends Parent {
                 "Total Aircraft Moment", tMomentProperty.getValue() + " lb-in");
         paramValues.add(totalAircraftMoment);
         ParameterValues currentCG = new ParameterValues(
-                "Current Center of Gravity", cgProperty.getValue() + " in");
+                "Current Center of Gravity", decimalFormat.format(cgProperty.getValue()) + " in");
         paramValues.add(currentCG);
         ParameterValues fuelVolume = new ParameterValues("Fuel Volume",
                 PlanData.fuelVolume + " gls");
