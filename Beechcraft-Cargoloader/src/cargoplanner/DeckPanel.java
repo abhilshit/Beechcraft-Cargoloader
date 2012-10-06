@@ -133,7 +133,7 @@ public class DeckPanel extends Pane {
                 build();
 
         setId("draggableContainer");
-
+        this.setManaged(true);
         this.getChildren().
                 addAll(irPos, hrPos, grPos, frPos, erPos, drPos, crPos, brPos,
                 arPos, ilPos, hlPos, glPos, flPos, elPos, dlPos, clPos, blPos,

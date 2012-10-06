@@ -32,6 +32,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -47,8 +48,8 @@ import javafx.scene.chart.PieChartBuilder;
 public class WeightCoverageChart extends Parent {
 
     public Node anotherChart;
-    public PlanData planData;
-    PieChart pie = PieChartBuilder.create().title("Weight Coverage").scaleX(0.85).scaleY(0.88).translateX(860).translateY(323).build();
+    public PlanData planData; 
+    PieChart pie = PieChartBuilder.create().title("Weight Coverage").titleSide(Side.BOTTOM).scaleX(0.62).scaleY(0.65).translateX(Properties.startX-185).translateY(Properties.leftStartY+Properties.height+100).legendVisible(false).build();
     public static NumberBinding weightA = PlanData.weightAR.add(PlanData.weightAL);
     NumberBinding weightB = PlanData.weightBR.add(PlanData.weightBL);
     NumberBinding weightC = PlanData.weightCR.add(PlanData.weightCL);
@@ -133,45 +134,4 @@ public class WeightCoverageChart extends Parent {
         getChildren().add(group);
     }
 }
-//    var pieBorder = Rectangle {
-//                scaleX: 0.52 scaleY: 0.50
-//                cache: true
-//                cacheHint: CacheHint.SCALE_AND_ROTATE
-//                x: pie.translateX + 18
-//                y: pie.translateY + 8
-//                fill: Color.CADETBLUE
-//                width: 459;
-//                height: 395;
-//                arcWidth: 15
-//                arcHeight: 15
-//                effect: Glow {
-//                    level: 1
-//                    input: Shadow {
-//                        // offsetX: -5
-//                        // offsetY: 5
-//                        width: 5
-//                        color: Color.CADETBLUE
-//                        radius: 15
-//                    }
-//                }
-//                opacity: 0.5
-//            }
-//    var pieeBG = Rectangle {
-//                scaleX: 0.52 scaleY: 0.50
-//                cache: true
-//                x: pie.translateX + 20
-//                y: pie.translateY + 12
-//                fill: Color.BLACK
-//                width: 454;
-//                height: 387;
-//                arcWidth: 15
-//                arcHeight: 15
-//            }
-//
-//    public override function create(): Node {
-//        return Group {
-//                    content: [pieBorder, pieeBG, pie]
-//                };
-//    }
 
-//}

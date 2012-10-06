@@ -1,23 +1,21 @@
 /*Workaround for RT-20015 */
 #uld-list-scrollbar .scroll-bar{  
-     -fx-opacity:1;
-     -fx-fill:black;
-     -fx-stroke:black;
-     -fx-translate-x: -6;
-     -fx-border-width: 1px;
-     -fx-scale-x: 1.7;
-     -fx-arc-height: 1px;
-     -fx-arc-width: 1px;
-     -fx-fill: black;
-     -fx-focus-traversable: true;
-         
+    -fx-opacity:1;
+    -fx-fill:black;
+    -fx-stroke:black;
+    -fx-translate-x: -6;
+    -fx-border-width: 1px;
+    -fx-scale-x: 1.7;
+    -fx-arc-height: 1px;
+    -fx-arc-width: 1px;
+    -fx-fill: black;
+    -fx-focus-traversable: true;
+
 }
 .root {
--fx-base: rgb(50, 50, 50);
--fx-background: rgb(50, 50, 50);
--fx-background-repeat: repeat;
--fx-background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAADFBMVEXx9vnw9fj+/v7///+vmeNIAAAAKklEQVQIHQXBAQEAAAjDoHn6dxaqrqpqAAWwMrZRs8EKAzWAshkUDIoZPCvPAOPf77MtAAAAAElFTkSuQmCC");
--fx-control-inner-background:  rgb(50, 50, 50);
+    -fx-base: rgb(50, 50, 50);
+    -fx-background: rgb(50, 50, 50);
+    -fx-control-inner-background:  rgb(50, 50, 50);
 }
 
 #uld-list
@@ -27,12 +25,13 @@
 }
 
 .table-view {
--fx-table-cell-border-color:derive(-fx-base,+10%);
--fx-table-header-border-color:derive(-fx-base,+20%);
--fx-arc-height: 5px;
--fx-arc-width: 5px;
+    -fx-table-cell-border-color:derive(-fx-base,+10%);
+    -fx-table-header-border-color:derive(-fx-base,+20%);
+    -fx-arc-height: 5px;
+    -fx-arc-width: 5px;
 }
 
-#deck{
+#draggableContainer{
+    -fx-background-repeat: repeat;
     -fx-background-image: url("bg.png");
 }

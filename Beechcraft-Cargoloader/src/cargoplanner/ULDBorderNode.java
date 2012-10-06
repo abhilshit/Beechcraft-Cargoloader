@@ -24,7 +24,7 @@ public class ULDBorderNode extends Parent {
     // private Tooltip toolTip = new Tooltip("ULD ID: 56746LX");
     private ObjectProperty<Color> borderFill = new SimpleObjectProperty<Color>(
             AppProperties.uldColor);
-    private Rectangle uldBorder = new Rectangle(100, 97, borderFill.getValue());
+    private Rectangle uldBorder = new Rectangle(Properties.width,Properties.height, borderFill.getValue());
     Group group = new Group();
     public Text weightText = TextBuilder.create().cache(true).
             font(new Font(12)).

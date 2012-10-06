@@ -21,7 +21,7 @@ import javafx.scene.layout.GridPane;
  */
 public class AppRoot extends Group {
 
-    private static DataPanel dataPanel = new DataPanel(270, 320);
+    private static DataPanel dataPanel = new DataPanel(Properties.startX+195, Properties.leftStartY+Properties.height+100);
     private static PlanData planData = new PlanData();
     private static DeckPanel deckPanel = getDeckPanel();
     private static GraphPanel graphPanel = new GraphPanel("graph");
@@ -44,7 +44,7 @@ public class AppRoot extends Group {
         uldScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         uldScrollPane.setFocusTraversable(true);
         uldScrollPane.requestFocus();
-        uldScrollPane.setPrefWidth(230);
+        uldScrollPane.setPrefWidth((Properties.width*2)+30);
         uldScrollPane.setPrefHeight(650);
 
         uldScrollPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -68,14 +68,15 @@ public class AppRoot extends Group {
         GridPane.setConstraints(uldList, 6, 6);
         GridPane.setValignment(uldList, VPos.TOP);
         content.add(uldScrollPane);
+        grid1.setTranslateX(-15);
 
-        this.getChildren().addAll(dataPanel,graphPanel,weightCoverageChart,deckPanel, grid1);
+        this.getChildren().addAll(weightCoverageChart,dataPanel,graphPanel,deckPanel, grid1);
+        
 
     }
 
     private static DeckPanel getDeckPanel() {
         DeckPanel deck = new DeckPanel();
-        deck.setId("deck");
         for (Node positionNode : deck.getChildren()) {
             PositionNode position = (PositionNode) positionNode;
             position.setPlanData(planData);

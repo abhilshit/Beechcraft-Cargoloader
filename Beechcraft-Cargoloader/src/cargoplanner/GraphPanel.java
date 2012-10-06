@@ -51,40 +51,25 @@ public class GraphPanel extends Pane {
     public GraphPanel(String id) {
         this.setId(id);
         envelope.setId("envelope");
-        envelope.setScaleX(0.90);
-        envelope.setScaleY(0.95);
+        envelope.setScaleX(0.80);
+        envelope.setScaleY(0.85);
         envelope.setCacheHint(CacheHint.SCALE_AND_ROTATE);
-        envelope.setTranslateX(503);
+        envelope.setTranslateX(640);
         envelope.setTranslateY(260);
         this.setCache(true);
-        Rectangle envelopeBorder = RectangleBuilder.create().cache(true).
-                cacheHint(CacheHint.SCALE_AND_ROTATE).
-                x(envelope.getTranslateX() + 42).
-                y(envelope.getTranslateY() + 27).
-                fill(Color.CADETBLUE).
-                width(379).
-                height(375).
-                arcWidth(15).
-                arcHeight(15).
-                effect(GlowBuilder.create().level(1).
-                input(ShadowBuilder.create().width(5).
-                color(Color.CADETBLUE).
-                radius(15).
-                build()).
-                build()).
-                opacity(0.5).
-                build();
+        
         Rectangle envelopeBG = RectangleBuilder.create().cache(true).
-                x(envelope.getTranslateX() + 42).
-                y(envelope.getTranslateY() + 27).
-                fill(Color.BLACK).
-                width(379).
-                height(375).
-                arcWidth(15).
-                arcHeight(15).
+                x(envelope.getTranslateX() + 62).
+                y(envelope.getTranslateY() + 47).
+                fill(Color.rgb(50, 50, 50)).
+                id("envelopeBG").
+                width(325).
+                height(345).
+                arcWidth(5).
+                arcHeight(5).
                 build();
         isBig = true;
-        Group tempGroup = new Group(envelopeBorder, envelopeBG, envelope);
+        Group tempGroup = new Group(envelopeBG, envelope);
         this.getChildren().
                 add(tempGroup);
         
