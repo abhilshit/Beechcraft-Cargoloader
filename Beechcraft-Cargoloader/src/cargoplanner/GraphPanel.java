@@ -51,20 +51,18 @@ public class GraphPanel extends Pane {
     public GraphPanel(String id) {
         this.setId(id);
         envelope.setId("envelope");
-        envelope.setScaleX(0.80);
-        envelope.setScaleY(0.85);
         envelope.setCacheHint(CacheHint.SCALE_AND_ROTATE);
-        envelope.setTranslateX(640);
-        envelope.setTranslateY(260);
+        envelope.setTranslateX(Properties.startX+310);
+        envelope.setTranslateY(Properties.leftStartY+Properties.height+95);
         this.setCache(true);
         
         Rectangle envelopeBG = RectangleBuilder.create().cache(true).
-                x(envelope.getTranslateX() + 62).
-                y(envelope.getTranslateY() + 47).
+                x(envelope.getTranslateX() + 12).
+                y(envelope.getTranslateY() - 6).
                 fill(Color.rgb(50, 50, 50)).
                 id("envelopeBG").
-                width(325).
-                height(345).
+                width(405).
+                height(392).
                 arcWidth(5).
                 arcHeight(5).
                 build();

@@ -64,8 +64,6 @@ public final class DataPanel extends Parent {
 
     public DataPanel() {
         updateParameters();
-        setScaleX(0.95);
-        setScaleY(0.95);
         gridPanel.setCache(true);
         gridPanel.setLayoutX(-16);
         gridPanel.setLayoutY(-31);

@@ -33,9 +33,9 @@ package cargoplanner;
  */
 public class Properties {
 
-    public static final double width = 80;
-    public static final double height = 80;
-    public static final double startX = 240;
+    public static final double width = 77;
+    public static final double height = 77;
+    public static final double startX = 275;
     public static final double startY = 50;
     public static final double leftStartY = 135;
 }

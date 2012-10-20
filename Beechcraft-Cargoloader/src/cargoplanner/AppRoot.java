@@ -21,7 +21,7 @@ import javafx.scene.layout.GridPane;
  */
 public class AppRoot extends Group {
 
-    private static DataPanel dataPanel = new DataPanel(Properties.startX+195, Properties.leftStartY+Properties.height+100);
+    private static DataPanel dataPanel = new DataPanel(Properties.startX+20, Properties.leftStartY+Properties.height+120);
     private static PlanData planData = new PlanData();
     private static DeckPanel deckPanel = getDeckPanel();
     private static GraphPanel graphPanel = new GraphPanel("graph");
@@ -44,8 +44,8 @@ public class AppRoot extends Group {
         uldScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         uldScrollPane.setFocusTraversable(true);
         uldScrollPane.requestFocus();
-        uldScrollPane.setPrefWidth((Properties.width*2)+30);
-        uldScrollPane.setPrefHeight(650);
+        uldScrollPane.setPrefWidth((Properties.width*3)+30);
+        uldScrollPane.setPrefHeight(450);
 
         uldScrollPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
@@ -69,6 +69,7 @@ public class AppRoot extends Group {
         GridPane.setValignment(uldList, VPos.TOP);
         content.add(uldScrollPane);
         grid1.setTranslateX(-15);
+        grid1.setTranslateY(-15);
 
         this.getChildren().addAll(weightCoverageChart,dataPanel,graphPanel,deckPanel, grid1);
         

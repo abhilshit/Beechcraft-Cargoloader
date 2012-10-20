@@ -84,8 +84,6 @@ public class Envelope extends Parent {
 
         envelope = new LineChart(envelopeXAxis, envelopeYAxis,
                 Envelope.dataSeries);
-        envelope.setTranslateX(10);
-        envelope.setTranslateY(35);
         envelope.setCreateSymbols(true);
         envelope.setLegendSide(Side.BOTTOM);
         envelope.setLegendVisible(false);

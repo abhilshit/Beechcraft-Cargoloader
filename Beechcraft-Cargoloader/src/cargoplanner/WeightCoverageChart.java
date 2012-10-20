@@ -38,6 +38,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChartBuilder;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.RectangleBuilder;
 
 /**
  * the pie chart showing weight on each section of the main deck of the
@@ -49,7 +52,7 @@ public class WeightCoverageChart extends Parent {
 
     public Node anotherChart;
     public PlanData planData; 
-    PieChart pie = PieChartBuilder.create().title("Weight Coverage").titleSide(Side.BOTTOM).scaleX(0.62).scaleY(0.65).translateX(Properties.startX-185).translateY(Properties.leftStartY+Properties.height+100).legendVisible(false).build();
+    PieChart pie = PieChartBuilder.create().title("Weight Coverage").titleSide(Side.BOTTOM).scaleX(0.62).scaleY(0.65).translateX(Properties.startX-400).translateY(Properties.leftStartY+Properties.height+160).legendVisible(false).build();
     public static NumberBinding weightA = PlanData.weightAR.add(PlanData.weightAL);
     NumberBinding weightB = PlanData.weightBR.add(PlanData.weightBL);
     NumberBinding weightC = PlanData.weightCR.add(PlanData.weightCL);
@@ -129,8 +132,18 @@ public class WeightCoverageChart extends Parent {
         });
         this.setCache(true);
         pie.setData(pieData);
+        Rectangle pieBG = RectangleBuilder.create().cache(true).
+                x(pie.getTranslateX() + 127).
+                y(pie.getTranslateY() + 84).
+                fill(Color.rgb(50, 50, 50)).
+                id("envelopeBG").
+                width(265).
+                height(245).
+                arcWidth(5).
+                arcHeight(5).
+                build();
         Group group = new Group();
-        group.getChildren().addAll(pie);
+        group.getChildren().addAll(pieBG,pie);
         getChildren().add(group);
     }
 }

@@ -43,6 +43,15 @@ public class ULDList extends GridPane {
                     new ULDNode(new PseudoULDNode(new ULD(110), true)),
                     new ULDNode(new PseudoULDNode(new ULD(250), true)),
                     new ULDNode(new PseudoULDNode(new ULD(218), true)));
+            this.addColumn(2,new ULDNode(new PseudoULDNode(new ULD(285), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(323), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(233), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(250), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(370), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(210), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(110), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(250), true)),
+                    new ULDNode(new PseudoULDNode(new ULD(218), true)));
 //            this.getChildren().
 //                    addAll(
 //                    );
