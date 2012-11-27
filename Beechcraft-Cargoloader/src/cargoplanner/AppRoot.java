@@ -21,13 +21,13 @@ import javafx.scene.layout.GridPane;
  */
 public class AppRoot extends Group {
 
-    private static DataPanel dataPanel = new DataPanel(Properties.startX+20, Properties.leftStartY+Properties.height+120);
+    private static DataPanel dataPanel = new DataPanel(Properties.startX + 20, Properties.leftStartY + Properties.height + 120);
     private static PlanData planData = new PlanData();
     private static DeckPanel deckPanel = getDeckPanel();
     private static GraphPanel graphPanel = new GraphPanel("graph");
     public static WeightCoverageChart weightCoverageChart = new WeightCoverageChart();
-    private static  ScrollPane uldScrollPane = new ScrollPane();
-    
+    private static ScrollPane uldScrollPane = new ScrollPane();
+
     public AppRoot() {
         super();
         GridPane grid1 = new GridPane();
@@ -44,24 +44,19 @@ public class AppRoot extends Group {
         uldScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         uldScrollPane.setFocusTraversable(true);
         uldScrollPane.requestFocus();
-        uldScrollPane.setPrefWidth((Properties.width*3)+30);
+        uldScrollPane.setPrefWidth((Properties.width * 3) + 30);
         uldScrollPane.setPrefHeight(450);
 
         uldScrollPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode()==KeyCode.DOWN)
-                {
-                    uldScrollPane.setVvalue(uldScrollPane.getVvalue()+1);
+                if (event.getCode() == KeyCode.DOWN) {
+                    uldScrollPane.setVvalue(uldScrollPane.getVvalue() + 1);
                 }
-                if(event.getCode()==KeyCode.UP)
-                {
-                    uldScrollPane.setVvalue(uldScrollPane.getVvalue()-1);
+                if (event.getCode() == KeyCode.UP) {
+                    uldScrollPane.setVvalue(uldScrollPane.getVvalue() - 1);
                 }
             }
-
-           
         });
 
 
@@ -71,16 +66,18 @@ public class AppRoot extends Group {
         grid1.setTranslateX(-15);
         grid1.setTranslateY(-15);
 
-        this.getChildren().addAll(weightCoverageChart,dataPanel,graphPanel,deckPanel, grid1);
-        
+        this.getChildren().addAll(weightCoverageChart, dataPanel, graphPanel, deckPanel, grid1);
+
 
     }
 
     private static DeckPanel getDeckPanel() {
         DeckPanel deck = new DeckPanel();
         for (Node positionNode : deck.getChildren()) {
-            PositionNode position = (PositionNode) positionNode;
-            position.setPlanData(planData);
+            if (positionNode instanceof PositionNode) {
+                PositionNode position = (PositionNode) positionNode;
+                position.setPlanData(planData);
+            }
         }
         return deck;
     }

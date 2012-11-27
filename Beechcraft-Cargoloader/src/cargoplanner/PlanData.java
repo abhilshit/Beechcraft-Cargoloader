@@ -32,6 +32,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Group;
 import javafx.scene.Node;
 
 /**
@@ -75,23 +76,23 @@ public class PlanData {
     public static double landingCG;
     public static ObservableList<PositionNode> loadedPositions = FXCollections.observableArrayList();
     public static DoubleProperty weightAR = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightBR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightCR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightDR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightER  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightFR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightGR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightHR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightIR  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightAL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightBL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightCL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightDL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightEL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightFL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightGL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightHL  = new SimpleDoubleProperty(0);
-    public static DoubleProperty weightIL  = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightBR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightCR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightDR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightER = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightFR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightGR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightHR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightIR = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightAL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightBL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightCL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightDL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightEL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightFL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightGL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightHL = new SimpleDoubleProperty(0);
+    public static DoubleProperty weightIL = new SimpleDoubleProperty(0);
 
     public PlanData() {
         DataPanel.setCWeight(0);
@@ -106,21 +107,22 @@ public class PlanData {
         double tempPlanMoment = 0;
         loadedPositions.clear();
         for (Node i : deck.getChildren()) {
-            PositionNode position = (PositionNode) i;
-            Object obj = position.getDataObject();
-            position.setMoment(0);
-            if (obj != null) {
-                ULD uld = (ULD) obj;
-                position.setMoment(uld.getWeight() * position.getFuselageStation());
-                loadedPositions.add(position);
-                setPositionWeight(position.getId(), uld.getWeight());
-                // println("{i.id} has {uld.weight} kgs");
-                tempPlanWeight = tempPlanWeight + uld.getWeight();
-                tempPlanMoment = tempPlanMoment + position.getMoment();
-            } else {
-                setPositionWeight(position.getId(), 0);
-            }
-
+            if (i instanceof PositionNode) {
+                        PositionNode position = (PositionNode) i;
+                        Object obj = position.getDataObject();
+                        position.setMoment(0);
+                        if (obj != null) {
+                            ULD uld = (ULD) obj;
+                            position.setMoment(uld.getWeight() * position.getFuselageStation());
+                            loadedPositions.add(position);
+                            setPositionWeight(position.getId(), uld.getWeight());
+                            // println("{i.id} has {uld.weight} kgs");
+                            tempPlanWeight = tempPlanWeight + uld.getWeight();
+                            tempPlanMoment = tempPlanMoment + position.getMoment();
+                        } else {
+                            setPositionWeight(position.getId(), 0);
+                        }
+                    }
         }
         currentPlanWeight = tempPlanWeight;
         currentPlanMoment = tempPlanMoment;
@@ -197,6 +199,4 @@ public class PlanData {
                 break;
         }
     }
-
-   
 }

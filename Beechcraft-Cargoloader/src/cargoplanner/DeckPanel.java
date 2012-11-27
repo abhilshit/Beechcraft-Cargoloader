@@ -27,7 +27,10 @@
  */
 package cargoplanner;
 
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.LineBuilder;
 
 /**
  * the panel that contains horizontal crosssection view of the aircraft where
@@ -134,8 +137,14 @@ public class DeckPanel extends Pane {
 
         setId("draggableContainer");
         this.setManaged(true);
+        Group bgScalegroup = new Group();
+        for(double i=(Properties.startX-5);i<(((Properties.width+10)*12)+5);i=i+5)
+        {
+            Line verticalBGLine = LineBuilder.create().startX(i).opacity(0.3).startY(Properties.startY-5).endX(i).endY((Properties.startY+Properties.height*2)+90).build(); 
+            bgScalegroup.getChildren().add(verticalBGLine);
+        }
         this.getChildren().
-                addAll(irPos, hrPos, grPos, frPos, erPos, drPos, crPos, brPos,
+                addAll(bgScalegroup,irPos, hrPos, grPos, frPos, erPos, drPos, crPos, brPos,
                 arPos, ilPos, hlPos, glPos, flPos, elPos, dlPos, clPos, blPos,
                 alPos);
 
