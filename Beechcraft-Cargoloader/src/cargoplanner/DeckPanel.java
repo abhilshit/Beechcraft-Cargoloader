@@ -140,8 +140,13 @@ public class DeckPanel extends Pane {
         Group bgScalegroup = new Group();
         for(double i=(Properties.startX-5);i<(((Properties.width+10)*12)+5);i=i+5)
         {
-            Line verticalBGLine = LineBuilder.create().startX(i).opacity(0.3).startY(Properties.startY-5).endX(i).endY((Properties.startY+Properties.height*2)+90).build(); 
+            Line verticalBGLine = LineBuilder.create().startX(i).opacity(0.3).startY(Properties.startY-50).endX(i).endY((Properties.startY+Properties.height*2)+90).strokeWidth(0.5).build(); 
             bgScalegroup.getChildren().add(verticalBGLine);
+        }
+        for(double i=(Properties.startY-50);i<(((Properties.height)*4)-10);i=i+5)
+        {
+            Line horizontalBGLine = LineBuilder.create().startX(Properties.startX-5).opacity(0.3).startY(i).endX((Properties.startX+Properties.width*9)+90).endY(i).strokeWidth(0.5).build(); 
+            bgScalegroup.getChildren().add(horizontalBGLine);
         }
         this.getChildren().
                 addAll(bgScalegroup,irPos, hrPos, grPos, frPos, erPos, drPos, crPos, brPos,

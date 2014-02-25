@@ -55,7 +55,7 @@ public class PositionNode extends DroppableNode {
     public PositionNode() {
         Rectangle rectangle = new Rectangle(Properties.width, Properties.height,
                 new LinearGradient(0, 0, 0, 0, true, CycleMethod.NO_CYCLE,
-                new Stop[]{new Stop(0, Color.RED), new Stop(1, Color.MAROON)}));
+                new Stop[]{new Stop(0, Color.WHITESMOKE), new Stop(1, Color.MAROON)}));
         rectangle.setCache(true);
         rectangle.setArcHeight(5);
         rectangle.setArcWidth(5);

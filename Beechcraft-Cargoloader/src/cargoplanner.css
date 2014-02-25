@@ -31,10 +31,10 @@
     -fx-arc-width: 5px;
 }
 
-#draggableContainer{
+/*#draggableContainer{
     -fx-background-repeat: repeat;
     -fx-background-image: url("bg.png");
-}
+}*/
 
 
 .scroll-bar{ 

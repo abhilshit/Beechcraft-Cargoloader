@@ -103,7 +103,7 @@ public class DeckNode extends Parent {
     Label header = LabelBuilder.create().cache(true).
             layoutX(123).
             layoutY(-20).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             font(new Font(15)).
             prefWidth(deckImage.getImage().
             getWidth() - 180).
@@ -115,7 +115,7 @@ public class DeckNode extends Parent {
             endX(670).
             endY(160).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Line noseLine = LineBuilder.create().cache(true).
             startX(670).
@@ -123,7 +123,7 @@ public class DeckNode extends Parent {
             endX(670).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label noseLabel = LabelBuilder.create().cache(true).
             layoutX(656).
@@ -131,7 +131,7 @@ public class DeckNode extends Parent {
             text("0 Nose").
             wrapText(true).
             prefWidth(25).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line tailLine = LineBuilder.create().cache(true).
             startX(10).
@@ -139,7 +139,7 @@ public class DeckNode extends Parent {
             endX(10).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label tailLabel = LabelBuilder.create().cache(true).
             layoutX(5).
@@ -147,7 +147,7 @@ public class DeckNode extends Parent {
             text("533 Tail").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line aLine = LineBuilder.create().cache(true).
             startX(595).
@@ -155,7 +155,7 @@ public class DeckNode extends Parent {
             endX(595).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label aLabel = LabelBuilder.create().cache(true).
             layoutX(595).
@@ -163,7 +163,7 @@ public class DeckNode extends Parent {
             text("225 Sec A").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line bLine = LineBuilder.create().cache(true).
             startX(525).
@@ -171,7 +171,7 @@ public class DeckNode extends Parent {
             endX(525).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label bLabel = LabelBuilder.create().cache(true).
             layoutX(525).
@@ -179,7 +179,7 @@ public class DeckNode extends Parent {
             text("255 Sec B").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line cLine = LineBuilder.create().cache(true).
             startX(465).
@@ -187,7 +187,7 @@ public class DeckNode extends Parent {
             endX(465).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label cLabel = LabelBuilder.create().cache(true).
             layoutX(465).
@@ -195,7 +195,7 @@ public class DeckNode extends Parent {
             text("285 Sec C").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line dLine = LineBuilder.create().cache(true).
             startX(400).
@@ -203,7 +203,7 @@ public class DeckNode extends Parent {
             endX(400).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label dLabel = LabelBuilder.create().cache(true).
             layoutX(400).
@@ -211,7 +211,7 @@ public class DeckNode extends Parent {
             text("315 Sec D").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line eLine = LineBuilder.create().cache(true).
             startX(335).
@@ -219,7 +219,7 @@ public class DeckNode extends Parent {
             endX(335).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label eLabel = LabelBuilder.create().cache(true).
             layoutX(335).
@@ -227,7 +227,7 @@ public class DeckNode extends Parent {
             text("345 Sec E").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line fLine = LineBuilder.create().cache(true).
             startX(265).
@@ -235,7 +235,7 @@ public class DeckNode extends Parent {
             endX(265).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label fLabel = LabelBuilder.create().cache(true).
             layoutX(265).
@@ -243,7 +243,7 @@ public class DeckNode extends Parent {
             text("375 Sec F").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line gLine = LineBuilder.create().cache(true).
             startX(195).
@@ -251,7 +251,7 @@ public class DeckNode extends Parent {
             endX(195).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label gLabel = LabelBuilder.create().cache(true).
             layoutX(195).
@@ -259,7 +259,7 @@ public class DeckNode extends Parent {
             text("405 Sec G").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line hLine = LineBuilder.create().cache(true).
             startX(125).
@@ -267,7 +267,7 @@ public class DeckNode extends Parent {
             endX(125).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label hLabel = LabelBuilder.create().cache(true).
             layoutX(125).
@@ -275,7 +275,7 @@ public class DeckNode extends Parent {
             text("435 Sec H").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Line iLine = LineBuilder.create().cache(true).
             startX(55).
@@ -283,7 +283,7 @@ public class DeckNode extends Parent {
             endX(55).
             endY(165).
             strokeWidth(1).
-            stroke(Color.WHITE).
+            stroke(Color.BLACK).
             build();
     Label iLabel = LabelBuilder.create().cache(true).
             layoutX(55).
@@ -291,7 +291,7 @@ public class DeckNode extends Parent {
             text("365 Sec I").
             wrapText(true).
             prefWidth(35).
-            textFill(Color.WHITE).
+            textFill(Color.BLACK).
             build();
     Group scaleGroup = GroupBuilder.create().children(scaleBaseLine, noseLine,
             noseLabel, tailLine, tailLabel, aLine, aLabel, bLine, bLabel, cLine,
@@ -300,10 +300,12 @@ public class DeckNode extends Parent {
             build();
 
     public DeckNode() {
-        Group group = GroupBuilder.create().children(deckImageBorder, deckImageBg,
-                deckImage, scaleGroup, deckImageHeader, header).
-                build();
+//        Group group = GroupBuilder.create().children(deckImageBorder, deckImageBg,
+//                deckImage, scaleGroup, deckImageHeader, header).
+//                build();
+        scaleGroup.setTranslateX(Properties.startX);
+        scaleGroup.setTranslateY(Properties.startY+20);
         getChildren().
-                addAll(group);
+                addAll(scaleGroup);
     }
 }

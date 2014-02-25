@@ -65,8 +65,9 @@ public class AppRoot extends Group {
         content.add(uldScrollPane);
         grid1.setTranslateX(-15);
         grid1.setTranslateY(-15);
-
-        this.getChildren().addAll(weightCoverageChart, dataPanel, graphPanel, deckPanel, grid1);
+        DeckNode deckNode = new DeckNode();
+        
+        this.getChildren().addAll(weightCoverageChart, dataPanel, graphPanel, deckPanel,deckNode, grid1);
 
 
     }
