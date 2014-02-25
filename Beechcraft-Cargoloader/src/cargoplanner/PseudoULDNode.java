@@ -28,18 +28,21 @@ public class PseudoULDNode extends DraggableNode {
         uldImage.setTranslateX(5);
         uldImage.setTranslateY(5);
         super.setDataObject(data);
+        uldImage.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                uldBorder.setBorderFill(AppProperties.uldHoverColor);
+            }
+        });
         uldBorder.setOnMouseDragged(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent event) {
                 if (uldNode != null) {
                     if (uldNode.getParent() != null) {
                         uldList = (GridPane) uldNode.getParent();
                     }
-                    if (uldList != null && uldList.getChildren().
-                            contains(uldNode)) {
-                        uldList.getChildren().
-                                remove(uldNode);
+                    if (uldList != null && uldList.getChildren().contains(uldNode)) {
+                        uldList.getChildren().remove(uldNode);
                         uldList.requestLayout();
                     }
                 }
@@ -52,31 +55,31 @@ public class PseudoULDNode extends DraggableNode {
         });
 
         uldBorder.setOnMouseReleased(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent event) {
                 if (!getDropIndicator() || getIsDropped()) {
-                    System.out.println("click count " +event.getClickCount());
-                    if(getIsDropped()&&event.getClickCount()<2)
-                    {
+                    System.out.println("click count " + event.getClickCount());
+                    if (getIsDropped() && event.getClickCount() < 2) {
                         return;
                     }
-                    if (uldList != null) {
-                        if (!uldList.getChildren().contains(uldNode)) {
-                            uldList.getChildren().
-                                    add(uldNode);
-                            uldList.requestLayout();
-                            uldBorder.setBorderFill(AppProperties.uldColor);
-                        }
-                    }
+                    removeNode();
                 }
             }
         });
 
 
-        group.getChildren().
-                addAll(uldBorder, uldImage, new Rectangle(10, 10, Color.BLANCHEDALMOND));
-        getChildren().
-                addAll(group);
+        group.getChildren().addAll(uldBorder, uldImage);
+        getChildren().addAll(group);
+    }
+
+    public void removeNode() {
+        if (uldList != null) {
+            if (!uldList.getChildren().contains(uldNode)) {
+                uldList.getChildren().add(uldNode);
+                uldList.requestLayout();
+                uldBorder.setBorderFill(AppProperties.uldColor);
+            }
+        }
+
     }
 }

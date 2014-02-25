@@ -2,7 +2,9 @@ package cargoplanner;
 
 import cargoplanner.dnd.DraggableNotFoundException;
 import cargoplanner.dnd.PseudoDraggable;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.input.MouseEvent;
 
 /**
  * the container that is draggable (consists of both the ULD image and the ULD border)
@@ -29,6 +31,7 @@ public class ULDNode extends PseudoDraggable {
     private void configure()
     {
         this.pseudoULDNode.uldNode = this;
+        
     }
       
 }
