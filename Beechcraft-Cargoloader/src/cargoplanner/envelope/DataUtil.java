@@ -51,19 +51,18 @@ public class DataUtil {
     }
 
     public static void populateCGData(double weight, double cg) {
-        if(Envelope.dataSeries.get(3).getData().isEmpty())
+        if(!Envelope.dataSeries.get(3).getData().isEmpty())
         {
-        
             Envelope.dataSeries.get(3).getData().
-                set(0, new LineChart.Data(Double.valueOf(cg), Double.valueOf(
-                weight)));    
+                    set(0,new LineChart.Data(cg, weight));
+                
         }
         else
         {
-                Envelope.dataSeries.get(3).getData().
-                set(0,new LineChart.Data(Double.valueOf(cg), Double.valueOf(
-                weight)));
             
+            Object set = Envelope.dataSeries.get(3).getData().
+                    set(0, new LineChart.Data(cg, Double.valueOf(
+                            weight)));
         }
         
     }

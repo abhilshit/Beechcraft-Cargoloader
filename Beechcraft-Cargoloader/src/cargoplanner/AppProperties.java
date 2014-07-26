@@ -22,4 +22,5 @@ public class AppProperties {
             build();
     public static Color uldColor = Color.CADETBLUE;
     public static Color uldHoverColor = Color.ORANGE;
+    public static Boolean dragAnimate=false;
 }

@@ -1,5 +1,7 @@
 package cargoplanner.dnd;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -95,11 +97,10 @@ public class DraggableNode extends Parent {
 
         comeBack.getKeyFrames().
                 addAll(new KeyFrame(Duration.valueOf("200ms"), onFrame2Finished,
-                new KeyValue(translateXProperty(), initialTransX.getValue(),
-                Interpolator.EASE_BOTH),
-                new KeyValue(translateYProperty(), initialTransY.getValue(),
-                Interpolator.EASE_BOTH)));
-
+                                new KeyValue(translateXProperty(), initialTransX.getValue(),
+                                        Interpolator.EASE_BOTH),
+                                new KeyValue(translateYProperty(), initialTransY.getValue(),
+                                        Interpolator.EASE_BOTH)));
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
 
@@ -109,7 +110,6 @@ public class DraggableNode extends Parent {
                 onNodeMouseDragged(t);
             }
         });
-
 
         this.setOnMouseReleased(new EventHandler<MouseEvent>() {
 
@@ -197,9 +197,7 @@ public class DraggableNode extends Parent {
                     getChildrenUnmodifiable()) {
                 addDraggablesDroppables(node);
             }
-        }
-        else
-        {
+        } else {
             System.out.println("hi");
         }
     }
@@ -292,6 +290,7 @@ public class DraggableNode extends Parent {
 
         } else {
             if (removeOnRelease) {
+
                 removeFromRoot();
             }
         }
@@ -305,8 +304,12 @@ public class DraggableNode extends Parent {
                     getRoot();
             if (root.getChildren().
                     contains(this)) {
-                root.getChildren().
-                        remove(this);
+                try {
+                    root.getChildren().
+                            remove(this);
+                } catch (IndexOutOfBoundsException e) {
+                    Logger.getLogger(this.getClass().getName()).info("Element was already removed");
+                }
             }
         }
     }

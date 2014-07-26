@@ -3,6 +3,7 @@ package cargoplanner;
 import cargoplanner.dnd.DraggableNode;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -12,13 +13,14 @@ import javafx.scene.paint.Color;
  * @author abhilshit
  */
 public class PseudoULDNode extends DraggableNode {
-
+    
     public ULDImageNode uldImage = new ULDImageNode();
     public ULDBorderNode uldBorder = new ULDBorderNode();
+    
     public ULDNode uldNode = null;
     GridPane uldList = null;
     Group group = new Group();
-
+    
     public PseudoULDNode(Object data, boolean dragAnimate) {
         removeOnRelease = true;
         super.setDataObject(data);
@@ -26,10 +28,21 @@ public class PseudoULDNode extends DraggableNode {
         uldImage.setTranslateX(5);
         uldImage.setTranslateY(5);
         super.setDataObject(data);
+        uldBorder.weightText.setText(((ULD)data).getWeight()+" lbs");
         uldImage.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 uldBorder.setBorderFill(AppProperties.uldHoverColor);
+                //resetColor();
+            }
+        });
+        uldImage.setOnMouseExited(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                uldBorder.setBorderFill(AppProperties.uldColor);
+               // resetColor();
+                //toolTip.hide();
             }
         });
         uldBorder.setOnMouseDragged(new EventHandler<MouseEvent>() {
@@ -51,7 +64,7 @@ public class PseudoULDNode extends DraggableNode {
                 }
             }
         });
-
+        
         uldBorder.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -62,14 +75,15 @@ public class PseudoULDNode extends DraggableNode {
                     }
                     removeNode();
                 }
+                 group.requestLayout();
             }
+           
         });
-
-
-        group.getChildren().addAll(uldBorder, uldImage);
+        
+        group.getChildren().addAll(uldBorder,uldImage);
         getChildren().addAll(group);
     }
-
+    
     public void removeNode() {
         if (uldList != null) {
             if (!uldList.getChildren().contains(uldNode)) {
@@ -78,6 +92,14 @@ public class PseudoULDNode extends DraggableNode {
                 uldBorder.setBorderFill(AppProperties.uldColor);
             }
         }
-
+        
+    }
+    public void resetColor() {
+        for (Node node : uldList.getChildren()) {
+            ULDNode currentULDNode = (ULDNode) node;
+            if (!currentULDNode.equals(uldNode)) {
+                currentULDNode.pseudoULDNode.uldBorder.setBorderFill(AppProperties.uldColor);
+            }
+        }
     }
 }

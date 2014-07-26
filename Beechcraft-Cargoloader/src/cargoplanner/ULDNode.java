@@ -23,6 +23,7 @@ public class ULDNode extends PseudoDraggable {
         this.pseudoULDNode = pseudoULDNode;
         uldImage.setTranslateX(5);
         uldImage.setTranslateY(5);
+        uldBorder.weightText.setText(pseudoULDNode.uldBorder.weightText.getText());
         group.getChildren().addAll(uldBorder,uldImage);
         getChildren().addAll(group);
         configure();
